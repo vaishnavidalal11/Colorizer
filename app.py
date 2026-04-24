@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[6]:
-
-
-
 # import the necessary packages
 import numpy as np
 import cv2
@@ -19,9 +12,9 @@ def colorizer(img):
     # load our serialized black and white colorizer model and cluster
     # center points from disk
     #Note: Please take in account the directories of your local system.
-    prototxt = r"\projects\Colorizer\models\models_colorization_deploy_v2.prototxt"
-    model = r"\Colorizer\models\colorization_release_v2.caffemodel"
-    points = r"\projects\Colorizer\models\pts_in_hull.npy"
+    prototxt = r"models/models_colorization_deploy_v2.prototxt"
+    model = r"models/colorization_release_v2.caffemodel"
+    points = r"models/pts_in_hull.npy"
     net = cv2.dnn.readNetFromCaffe(prototxt, model)
     pts = np.load(points)
     # add the cluster centers as 1x1 convolutions to the model
@@ -64,7 +57,6 @@ st.write("""
           )
 
 st.write("This is an app to turn Colorize your B&W images.")
-st.write("Created on Thursday, 12 November 2020 (IST) \n @author: Dhananjayan")
 
 file = st.sidebar.file_uploader("Please upload an image file", type=["jpg", "png"])
 
@@ -83,10 +75,3 @@ else:
     st.image(color, use_column_width=True)
     
     print("done!")
-
-
-# In[ ]:
-
-
-
-
